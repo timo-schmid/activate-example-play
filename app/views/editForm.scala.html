@@ -1,5 +1,8 @@
 @(id: String, computerForm: Form[net.fwbrasil.activate.entity.map.MutableEntityMap[Computer]])
 
+@import play.api.i18n.Messages.Implicits._
+@import play.api.Play.current
+
 @import helper._
 
 @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }

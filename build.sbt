@@ -4,16 +4,15 @@ version := "1.0"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.10.4"
+scalaVersion := "2.11.6"
 
-val activateVersion = "1.6.3"
+val activateVersion = "1.7"
 
 libraryDependencies ++= Seq(
   jdbc,
-  anorm,
   cache,
   ws,
-  "org.scalatestplus" %% "play" % "1.1.0" % "test",
+  "org.specs2" %% "specs2" % "2.4.2" % "test" force(),
   "net.fwbrasil" %% "activate-play" % activateVersion,
   "net.fwbrasil" %% "activate-jdbc" % activateVersion,
   "net.fwbrasil" %% "activate-slick" % activateVersion,

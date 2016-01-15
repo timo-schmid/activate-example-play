@@ -31,14 +31,14 @@ class ApplicationSpec extends SpecificationWithJUnit with ActivatePlayTest {
             val result = controllers.Application.list(0, 2, "")(FakeRequest())
 
             status(result) must equalTo(OK)
-            contentAsString(result) must contain("564 computers found")
+            contentAsString(result) must contain("565 computers found")
         }
 
         "filter computer by name" inActivate {
             val result = controllers.Application.list(0, 2, "Apple")(FakeRequest())
 
             status(result) must equalTo(OK)
-            contentAsString(result) must contain("12 computers found")
+            contentAsString(result) must contain("13 computers found")
         }
 
         "create new computer" inActivate {
@@ -54,9 +54,9 @@ class ApplicationSpec extends SpecificationWithJUnit with ActivatePlayTest {
                 FakeRequest().withFormUrlEncodedBody("name" -> "FooBar", "introduced" -> "badbadbad", "company" -> apple.id))
 
             status(badDateFormat) must equalTo(BAD_REQUEST)
-            contentAsString(badDateFormat) must contain("""selected>Apple Inc.</option>""")
-            contentAsString(badDateFormat) must contain("""<input type="text" id="introduced" name="introduced" value="badbadbad" >""")
-            contentAsString(badDateFormat) must contain("""<input type="text" id="name" name="name" value="FooBar" >""")
+            contentAsString(badDateFormat) must contain(""""selected">Apple Inc.</option>""")
+            contentAsString(badDateFormat) must contain("""<input type="text" id="introduced" name="introduced" value="badbadbad" />""")
+            contentAsString(badDateFormat) must contain("""<input type="text" id="name" name="name" value="FooBar" />""")
 
             val result = controllers.Application.save(
                 FakeRequest().withFormUrlEncodedBody("name" -> "FooBar", "introduced" -> "2011-12-24", "company" -> apple.id))
